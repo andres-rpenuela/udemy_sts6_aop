@@ -15,4 +15,9 @@ public class GreetingServcieImpl implements GreetingService {
 		return greeting;
 	}
 
+	@Override
+	public void throwException() {
+		throw new IllegalArgumentException("Invalid data");
+	}
+
 }

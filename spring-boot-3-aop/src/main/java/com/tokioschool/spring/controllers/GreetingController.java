@@ -21,4 +21,10 @@ public class GreetingController {
 		String greeting = greetingService.sayHello("Andres", "Bienvenido al sistema");
 		return ResponseEntity.ok(Collections.singletonMap("greeting", greeting));
 	}
+	
+	@GetMapping("/throw")
+	public ResponseEntity<?> throwHandler(){
+		greetingService.throwException();
+		return ResponseEntity.ok(Collections.singletonMap("throw", "call throw"));
+	}
 }
