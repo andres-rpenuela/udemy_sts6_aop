@@ -21,12 +21,9 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Order(1)
 public class GreetingUpperAspect {
-	
-	@Pointcut("execution(* com.tokioschool.spring.services.GreetingService.*(..))")
-	public void loggerGrretingUpperPC() { };
-	
+		
 	// example of Order Aspect
-	@Before(value = "loggerGrretingUpperPC()") // Punto de corte, si es una interfaz se aplica a cualquier clase que implemente una interfza
+	@Before(value = "com.tokioschool.spring.aspects.pointcuts.GreetingServicePointcuts.loggerGrretingUpperPC()") // Punto de corte, si es una interfaz se aplica a cualquier clase que implemente una interfza
 	public void loggerbeforeGenericd(JoinPoint joinPoint) throws Throwable { // Consejo
 		// before
 		final String method = joinPoint.getSignature().getName();
