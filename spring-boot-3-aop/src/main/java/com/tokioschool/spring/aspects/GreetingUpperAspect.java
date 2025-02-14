@@ -10,6 +10,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -21,8 +22,11 @@ import lombok.extern.slf4j.Slf4j;
 @Order(1)
 public class GreetingUpperAspect {
 	
+	@Pointcut("execution(* com.tokioschool.spring.services.GreetingService.*(..))")
+	public void loggerGrretingUpperPC() { };
+	
 	// example of Order Aspect
-	@Before(value = "execution(* com.tokioschool.spring.services.GreetingService.*(..))") // Punto de corte, si es una interfaz se aplica a cualquier clase que implemente una interfza
+	@Before(value = "loggerGrretingUpperPC()") // Punto de corte, si es una interfaz se aplica a cualquier clase que implemente una interfza
 	public void loggerbeforeGenericd(JoinPoint joinPoint) throws Throwable { // Consejo
 		// before
 		final String method = joinPoint.getSignature().getName();
